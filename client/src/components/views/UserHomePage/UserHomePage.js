@@ -1,9 +1,27 @@
 import { FaCode } from "react-icons/fa";
-import React, { Suspense } from 'react';
+import React, { useState,useEffect, Suspense } from 'react';
 import NavBar from "../../views/NavBar/NavBar";
+import Axios from "axios";
 
 
 function UserHomePage(){
+    
+    const[Rounds, setRounds] = useState([])
+    useEffect(() => {
+        
+        Axios.post('api/round/getRounds')
+            .then(response=> {
+                if(response.data.success){
+                    setRounds(response.data.rounds)
+
+                    console.log(response.data.rounds)
+                }else {
+                    alert('Failed to get rounds')
+                }
+            })
+        
+    }, [])
+    
     return (
         <div>
             <NavBar/>
