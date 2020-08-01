@@ -51,7 +51,7 @@ function LoginPage(props) {
                 } else {
                   localStorage.removeItem('rememberMe');
                 }
-                props.history.push("/");
+                props.history.push("/user");
               } else {
                 setFormErrorMessage('Check out your Account or Password again')
               }
@@ -82,7 +82,7 @@ function LoginPage(props) {
           <div className="app">
 
             <Title level={2}>Log In</Title>
-            <form onSubmit={handleSubmit} style={{ width: '350px' }}>
+            <Form onSubmit={handleSubmit} style={{ width: '350px' }}>
 
               <Form.Item required>
                 <Input
@@ -130,13 +130,13 @@ function LoginPage(props) {
                   forgot password
                   </a>
                 <div>
-                  <Button type="primary" htmlType="submit" className="login-form-button" style={{ minWidth: '100%' }} disabled={isSubmitting} onSubmit={handleSubmit}>
+                  <Button type="primary" htmlType="submit" className="login-form-button" style={{ width: "350px"}} disabled={isSubmitting} onSubmit={handleSubmit}>
                     Log in
                 </Button>
                 </div>
                 Or <a href="/register">register now!</a>
               </Form.Item>
-            </form>
+            </Form>
           </div>
         );
       }}
