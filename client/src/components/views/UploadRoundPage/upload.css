@@ -1,0 +1,79 @@
+input[type=text] {
+    border: none;
+    background-color: none;
+    outline: 0;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: right;
+    float: right;
+    width: 60%
+  }
+  
+  input[type=text]:focus {
+    border: none;
+    background-color: none;
+    outline: 0;
+  }
+
+  input[type=date] {
+    border: none;
+    background-color: none;
+    outline: 0;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: right;
+    float: right;
+    width: 60%
+  }
+  
+  input[type=date]:focus {
+    border: none;
+    background-color: none;
+    outline: 0;
+  }
+  
+  input[type=number] {
+    border: none;
+    background-color: none;
+    outline: 0;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: right;
+    width: 60%;
+    float: right;
+    -moz-appearance: textfield;
+
+  }
+  
+  input[type=number]:focus {
+    border: none;
+    background-color: none;
+    outline: 0;
+  }
+
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+  .why{
+     white-space: nowrap;
+  }
+
+  .why{
+    width: 40%;
+    overflow: hidden;
+    float: left;
+    text-align: left;
+    line-height: 17px;
+    vertical-align: 70%;
+}
+
+[type="date"]::-webkit-inner-spin-button {
+    display: none;
+  }
+  [type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+  }

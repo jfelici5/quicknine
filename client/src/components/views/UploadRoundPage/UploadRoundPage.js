@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
-import {Typography, Button, Form, message, Input, Icon, DatePicker} from 'antd';
+import {Divider, Typography, Button, Form, message, Input, Icon, DatePicker} from 'antd';
 import moment from 'moment'
 import Axios from 'axios';
+import NavBar from '../NavBar/NavBar'
+import '../UploadRoundPage/upload.css'
 
 const dateFormat = 'YYYY/MM/DD'
 const dateFormatList = ['MM/DD/YYYY', 'DD/MM/YY'];
@@ -39,14 +41,27 @@ function UploadRoundPage(props) {
     const onParChange = (event) => {
         setParValue(event.currentTarget.value)
     }
+    
     const [ScoreValue, setScoreValue] = useState()
     
     const onScoreChange = (event) => {
         setScoreValue(event.currentTarget.value)
     }
 
+    const [DateValue, setDateValue] = useState("")
+    
+    const onDateChange = (event) => {
+        
+         setDateValue(event.currentTarget.value)   
+         
+    }
+
     const onSubmit = (event) => {
         event.preventDefault();
+
+        if(!NameValue || !CourseValue || !HolesValue || !ScoreValue || !ParValue){
+            return alert("Please fill in all the required fields.")
+        }
 
         const variables = {
             writer: props.user.userData._id,
@@ -54,7 +69,8 @@ function UploadRoundPage(props) {
             course: CourseValue,
             holes: HolesValue,
             score: ScoreValue,
-            par: ParValue
+            par: ParValue,
+            date: DateValue
         }
 
     Axios.post('/api/round/uploadRound' , variables)
@@ -67,74 +83,106 @@ function UploadRoundPage(props) {
             }
         })
     }
-    return (
-        <div style = {{maxWidth: '700px', margin: '2rem auto'}}>
-            <div style={{textAlign:'center', marginBottom:'2rem'}}>
-                <Title level = {2}> Add Round</Title>
-            </div>
 
-        <Form onSubmit = {onSubmit}>
-            <label>Name (Optional)</label>
-            <Input
+    
+    return (
+        <div>
+        <NavBar/>
+        <div className = "app">
+            
+                <Title level = {2}> Add Round</Title>
+            <br/>
+            <br/>
+
+        <Form onSubmit = {onSubmit} style = {{width: '350px'}}>
+            <div>
+            <Form.Item required>
+            
+            <div className = "why"><strong>Name</strong></div>
+            <input
+                type = "text"
+                className = "inpuut"
                 onChange = {onNameChange}
                 value = {NameValue}
-                placeholder="Sunday morning stroll"
-                bordered = {false}
+                placeholder="e.g. Practice Round"
             />
             
-            <label>Date</label>
-            <br/>
-            <DatePicker 
-                defaultValue={moment(today, dateFormatList[0])} 
-                format={dateFormatList}
-                bordered = {false}
+            </Form.Item>
+            </div>
+            <Divider plain/>
+            <div>
+            <Form.Item required>
+            <div className = "why"><strong>Date</strong></div>
+            <input
+            onChange = {onDateChange}
+            className = "center"
+            type = "date"
             />
-
-            <br/>
-            <label>Course</label>
-            <Input
+            </Form.Item>
+            </div>
+            <Divider plain/>
+            <div>
+            <Form.Item required>
+            <div className = "why"><strong>Course</strong></div>
+            <input
+                type = "text"
                 onChange = {onCourseChange}
                 value = {CourseValue}
-                placeholder="Augusta National Golf Club"
-                bordered = {false}
+                placeholder="e.g. St. Andrews"
             />
-            <label>Holes</label>
-            <Input
+            </Form.Item>
+            </div>
+            <Divider plain/>
+            <div>
+            <Form.Item required >
+            <div className = "why"><strong>Holes Played</strong></div>
+            <input
                 onChange = {onHolesChange}
                 value = {HolesValue}
                 type = "number"
-                placeholder="18"
-                bordered = {false}
+                min = {9}
+                max = {18}
+                step = {9}
+                placeholder="9 or 18"
             />
-            <label>Par</label>
-            <Input
+            </Form.Item>
+            </div>
+            <Divider plain/>
+            <div>
+            <Form.Item required>
+            <div className = "why"><strong>Par</strong></div>
+            <input
+            className = "center"
                 onChange = {onParChange}
                 value = {ParValue}
                 type = "number"
-                placeholder="72"
-                bordered = {false}
+                placeholder="e.g. 72"
             />
-            <label>Score</label>
-            <Input
+            </Form.Item>
+            </div>
+            <Divider plain/>
+            <Form.Item required>
+            <div className = "why"><strong>Score</strong></div>
+            <input
+            className = "center"
                 onChange = {onScoreChange}
                 value = {ScoreValue}
                 type = "number"
-                placeholder="68"
-                bordered = {false}
+                placeholder="e.g. 59"
             />
-
-            <br/>
-            <br/>
+            </Form.Item>
 
             <Button
                 onClick = {onSubmit}
+                style = {{width: "350px",
+                        background: "green"}}
             >
                 Save
             </Button>
         </Form>
 
 
-            
+        </div>
         </div>
     )
 }

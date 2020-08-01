@@ -9,30 +9,10 @@ import {
   Form,
   Input,
   Button,
+  Typography
 } from 'antd';
 
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 8 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 16 },
-  },
-};
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
+const { Title } = Typography;
 
 function RegisterPage(props) {
   const dispatch = useDispatch();
@@ -98,13 +78,13 @@ function RegisterPage(props) {
         } = props;
         return (
           <div className="app">
-            <h2>Sign up</h2>
-            <Form style={{ minWidth: '375px' }} {...formItemLayout} onSubmit={handleSubmit} >
+            <Title level={2}>Register</Title>
+            <Form style={{ width: '350px' }} onSubmit={handleSubmit} >
 
-              <Form.Item required label="Name">
+              <Form.Item required>
                 <Input
                   id="name"
-                  placeholder="Enter your name"
+                  placeholder="First Name"
                   type="text"
                   value={values.name}
                   onChange={handleChange}
@@ -118,10 +98,10 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Last Name">
+              <Form.Item required>
                 <Input
                   id="lastName"
-                  placeholder="Enter your Last Name"
+                  placeholder="Last Name"
                   type="text"
                   value={values.lastName}
                   onChange={handleChange}
@@ -135,10 +115,10 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Email" hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
+              <Form.Item required hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
                 <Input
                   id="email"
-                  placeholder="Enter your Email"
+                  placeholder="Email"
                   type="email"
                   value={values.email}
                   onChange={handleChange}
@@ -152,10 +132,10 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Password" hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
+              <Form.Item required hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
                 <Input
                   id="password"
-                  placeholder="Enter your password"
+                  placeholder="Password"
                   type="password"
                   value={values.password}
                   onChange={handleChange}
@@ -169,10 +149,10 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Confirm" hasFeedback>
+              <Form.Item required hasFeedback>
                 <Input
                   id="confirmPassword"
-                  placeholder="Enter your confirmPassword"
+                  placeholder="Confirm password"
                   type="password"
                   value={values.confirmPassword}
                   onChange={handleChange}
@@ -186,8 +166,8 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item {...tailFormItemLayout}>
-                <Button onClick={handleSubmit} type="primary" disabled={isSubmitting}>
+              <Form.Item >
+                <Button onClick={handleSubmit} type="primary" style = {{width: "350px"}} disabled={isSubmitting}>
                   Submit
                 </Button>
               </Form.Item>
