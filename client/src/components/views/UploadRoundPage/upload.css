@@ -77,3 +77,16 @@ input::-webkit-inner-spin-button {
   [type="date"]::-webkit-calendar-picker-indicator {
     display: none;
   }
+
+  .button {
+    background-color: rgba(0, 103, 71, 1);
+    width: 350px;
+    color: white;
+    font-weight: bold;
+  } 
+
+  .button:hover {
+    background-color: rgba(0, 103, 71, .9) !important;
+    border-color: rgba(0, 103, 71, .4) !important;
+    color: white;
+  }
