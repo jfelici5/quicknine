@@ -23,7 +23,7 @@ const roundSchema = mongoose.Schema({
         maxValue: 18 
     },
     par : {
-        type: String,
+        type: Number,
         default: 72
     },
     score :{
