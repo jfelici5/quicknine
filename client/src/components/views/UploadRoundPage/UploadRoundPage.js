@@ -89,8 +89,9 @@ function UploadRoundPage(props) {
         <div>
         <NavBar/>
         <div className = "app">
-            
-                <Title level = {2}> Add Round</Title>
+            <br/>
+            <br/>
+                <Title level = {2} > Add Round</Title>
             <br/>
             <br/>
 
@@ -171,11 +172,12 @@ function UploadRoundPage(props) {
                 placeholder="e.g. 59"
             />
             </Form.Item>
-
+            <br/>
             <Button
+                className = "button"
+                type = "text"
+                shape = "round"
                 onClick = {onSubmit}
-                style = {{width: "350px",
-                        background: "green"}}
             >
                 Save
             </Button>
